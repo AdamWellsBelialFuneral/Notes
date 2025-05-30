@@ -5,7 +5,7 @@ import secrets
 
 app = Flask(__name__)
 
-app.secret_key = secrets.token_hex(16)
+app.secret_key = secrets.getenv("SECRET_KEY", secrets.token(16))
 
 def init_db():
     conn = sqlite3.connect('notes.db')
