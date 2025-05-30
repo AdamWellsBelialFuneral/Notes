@@ -2,10 +2,11 @@ from flask import Flask, render_template, request, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import secrets
+import os
 
 app = Flask(__name__)
 
-app.secret_key = secrets.getenv("SECRET_KEY", secrets.token(16))
+app.secret_key = os.getenv("SECRET_KEY", secrets.token(16))
 
 def init_db():
     conn = sqlite3.connect('notes.db')
