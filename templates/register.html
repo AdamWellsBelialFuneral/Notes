@@ -1,9 +1,19 @@
-<h2>Registrar</h2>
-<form action="/login">
-    <button type="submit">Login</button>
-</form>
-<form method="POST">
-    <input name="username" placeholder="Usuário" required>
-    <input name="password" placeholder="Senha" type="password" required>
-    <button type="submit">Registrar</button>
-</form>
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="centered">
+            <a href="/login">Login</a>
+            <h2>Register</h2>
+            <form method="POST">
+                <input name="username" placeholder="Username" required>
+                <input name="password" placeholder="Password" type="password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </body>
+</html>

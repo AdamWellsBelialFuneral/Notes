@@ -30,10 +30,10 @@ def init_db():
     conn.commit()
     conn.close()
 
+init_db()
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    init_db()
-
     if 'user_id' not in session:
         return redirect('/login')
 
@@ -101,7 +101,7 @@ def login():
             session['username'] = user[1]
             return redirect('/')
         else:
-            return 'Usuário ou senha incorretos!'
+            return '<a href="/login">Incorrect username or password</a>'
     return render_template('login.html')
 
 @app.route('/logout')

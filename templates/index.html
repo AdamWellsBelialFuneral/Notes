@@ -5,38 +5,37 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <a href="/logout">Logout</a>
+    <a href="/register">Register</a>
+
     <h1>My notes</h1>
 
-    <form action="/register/">
-        <button type="submit">Register</button>
-    </form>
-    <form action="/logout">
-        <button type="submit">Logout</button>
-    </form>
-
-    <form method="POST">
+    <form method="POST" class="form">
         <label>Title</label>
         <input type="text" name="title" required>
 
         <label>Content</label>
         <textarea name="content" rows="4" required></textarea>
 
-        <button type="submit">Save Note</button>
+        <button type="submit">Post Note</button>
     </form>
 
     {% for note in notes %}
         <div class="note">
-            <h3>{{ note[1] }}</h3>
-            <p>{{ note[2] }}</p>
+    <h3>{{ note[1] }}</h3>
+    <hr>
+    <p>{{ note[2] }}</p>
 
-            <form action="/delete/{{ note[0] }}" method="POST">
-                <button type="submit">Delete</button>
-            </form>
+    <div class="delete_edit">
+        <form action="/delete/{{ note[0] }}" method="POST">
+            <button type="submit" title="Excluir">🗑️</button>
+        </form>
+        <form action="/edit/{{note[0]}}" method="GET">
+            <button type="submit" title="Editar">✏️</button>
+        </form>
+    </div>
+</div>
 
-            <form action="/edit/{{note[0]}}" method="GET">
-                <button type="submit">Edit</button>
-            </form>
-        </div>
     {% endfor %}
 </body>
 </html>
